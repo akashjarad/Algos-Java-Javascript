@@ -118,7 +118,9 @@ stack.push = function(array) {
 	return array;
 }
 
-//console.log(stack.push([1,2,3,4,5]));
+console.log('-----------------------------------------');
+
+console.log(stack.push([1,2,3,4,5]));
 
 
 function fillStack(rows) {
@@ -142,8 +144,7 @@ function pop(stack) {
 	return stack;
 }
 
-/*
+
 console.log(fillStack(10));
 console.log(push(push([1,2,3,4,5])));
 console.log(pop(pop([1,2,3,4,5])));
-*/

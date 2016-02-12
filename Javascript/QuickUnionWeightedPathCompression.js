@@ -12,6 +12,7 @@ var QuickUnion = {
 	root: function(i) {
 		this.subsize = 0;
 		while (i != this.array[i]) { //chase the root til i is equal an array index
+			this.array[i] = this.array[this.array[i]]; //path compression. set child to node grandparent
 			i = this.array[i]; //tricky. set i equal to whatever is at array[i]
 			this.subsize++;
 			}
@@ -40,7 +41,6 @@ QuickUnion.union(2,4);
 QuickUnion.union(9,0);
 QuickUnion.union(0,3);
 QuickUnion.union(4,8);
-QuickUnion.union(4,9);
 console.log(QuickUnion.array);
 
 console.log(QuickUnion.find(2,8));
