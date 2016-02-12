@@ -1,6 +1,8 @@
 //QuickUnion
 //QuickUnion: is faster with union (N), slower with find (N)
-//QuickFind: finds the index value (1) by making the union method slower (N)
+//QuickUnionWeighted: is faster with union (log N), and find (log N)
+//QuickUnionWeighted with Path Compression: even faster with union (1), and find (1) in practice
+//N + M lg N
 
 var QuickUnion = {
 	array: [],
