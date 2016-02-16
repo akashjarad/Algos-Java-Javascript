@@ -8,7 +8,7 @@ public class Maker {
 
 	public static int W;
 
-	public static int[] MakerFun(int N, int W) {
+	public static int Maker(int N, int W) {
 
 		grid = new int[N*W];
 
