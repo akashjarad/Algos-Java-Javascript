@@ -37,16 +37,16 @@ public class Percolation {
 
 			grid[randoInt] = 101; //101 or true to connect values meaing "on" or "filled"
 
-			if (grid[randoInt-1] == 101) {
+			if (randoInt > 0 && grid[randoInt-1] == 101) {
 				unionizer.union(grid[randoInt], grid[randoInt-1]);
 				}
-			else if (grid[randoInt+1] == 101 && randoInt % 5 != 0) {
+			else if (randoInt < 24 && grid[randoInt+1] == 101 && randoInt % 5 != 0) {
 				unionizer.union(grid[randoInt], grid[randoInt+1]);
 			}
-			else if (grid[randoInt+5] == 101) {
+			else if (randoInt < 20 && grid[randoInt+5] == 101) {
 				unionizer.union(grid[randoInt], grid[randoInt+5]);
 			}
-			else if (grid[randoInt-5] == 101) {
+			else if (randoInt > 4 && grid[randoInt-5] == 101) {
 				unionizer.union(grid[randoInt], grid[randoInt-5]);
 			}
 
