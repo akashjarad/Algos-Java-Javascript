@@ -12,11 +12,11 @@ public class Percolation {
 
 		Maker gridT = new Maker();
 
-		UF unionizer = new UF(10);
+		UF unionizer = new UF(25);
 
 		System.out.println(unionizer.count());
 
-		boolean grid[] = gridT.MakerFun(5,5);
+		int grid[] = gridT.MakerFun(5,5);
 
 		for (i = 0; i < grid.length; i++) {
 			if (i % 5 == 0)
@@ -24,6 +24,8 @@ public class Percolation {
 			else
 				System.out.print("[ ]");
 		} 
+
+		//need isOpen method
 
 		while (p == false) {
 
@@ -33,7 +35,21 @@ public class Percolation {
 
 			if (randoInt < grid.length) {
 
-			grid[randoInt] = true; //101 or true to connect values meaing "on" or "filled"
+			grid[randoInt] = 101; //101 or true to connect values meaing "on" or "filled"
+
+			if (grid[randoInt-1] == 101) {
+				unionizer.union(grid[randoInt], grid[randoInt-1]);
+				}
+			else if (grid[randoInt+1] == 101 && randoInt % 5 != 0) {
+				unionizer.union(grid[randoInt], grid[randoInt+1]);
+			}
+			else if (grid[randoInt+5] == 101) {
+				unionizer.union(grid[randoInt], grid[randoInt+5]);
+			}
+			else if (grid[randoInt-5] == 101) {
+				unionizer.union(grid[randoInt], grid[randoInt-5]);
+			}
+
 
 			System.out.println(randoInt);
 

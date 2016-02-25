@@ -2,21 +2,25 @@ package myclasses;
 
 public class Maker {
 
-	public static boolean[] grid;
+	public static int[] grid;
 
 	public static int N;
 
 	public static int W;
 
-	public static boolean[] MakerFun(int N, int W) {
+	public static int[] MakerFun(int N, int W) {
 
-		grid = new boolean[N*W];
+		grid = new int[N*W];
 
 		for (int i = 0; i < N*W; i++) {
-			grid[i] = false;
+			grid[i] = i;
 			}
 
 		return grid;
+	}
+
+	public static boolean isOpen(boolean b) {
+		return b;
 	}
 
 	public static void main(String[] args) {
