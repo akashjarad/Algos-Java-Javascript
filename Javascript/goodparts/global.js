@@ -966,3 +966,33 @@ var eventuality = function(that) {
 	return that;
 
 }; //end of eventuality function constructor parts definition
+
+//we can call eventuality on any object, giving it event handling methods 
+
+eventuality(that);
+
+/******* END CHP5: INHERITANCE *********/
+
+/****** START CHP6: ARRAYS ***********/
+
+Array Literal: gets array.prototype. with useful properties for numbers. including length 
+
+var array_numbers = ['zero', 'one', 'two'];
+
+Object literal. gets object.prototype
+
+var object_numbers = {
+	'1': 'one',
+	'2': 'two',
+	'3': 'three'
+}
+
+//IN java array members need to all be of same type
+// in javascript, arrays can have members of any type
+
+var misc = ['string', 98.7, undefined, null,
+            ['nested', 'array', 123], {'ayy': 'lmao'}, true,
+            Infinity, NaN ]
+
+
+misc.length // 9
