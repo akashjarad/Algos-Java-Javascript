@@ -996,3 +996,166 @@ var misc = ['string', 98.7, undefined, null,
 
 
 misc.length // 9
+
+numbers.length = 3;
+
+console.log(numbers);
+
+numbers[numbers.length] = "shi"; // [undefined, undefined, undefined, "shi"]
+
+numbers.push('go'); //[undefined, undefined, undefined, "shi", 'go']
+
+delete numbers[2];
+
+//delete leaves a hole in the array
+
+numbers.splice(2, 1);
+
+//first argument is ordinal position. second argument is the number of elements to delete
+
+/*********** ENUMERATION OF ARRAYS **************/
+
+// since arrays are objects, can be enumerated with
+for in statement
+
+//but there is no guarantee about order of array elements
+
+//can also dredge up unwanted properties from prototype chain
+
+use for (var i = 0; Things.length - 1; i++) {
+	Things[i];
+};
+
+//when properties are sequential integers, use array
+//else use object
+
+//array is an object, can define own function
+//ecma5 introduced isArray() method which returns if object is array
+
+var is_array = function(value) {
+	return value &&
+	typeof value === 'object' &&
+	value.constructor = 'Array';
+}
+
+//doesnt recognize arrays made in different windows or frames
+
+var is_array_sure = function(value) {
+
+	return value &&
+		typeof value === 'object' &&
+		typeof value.length === 'number' &&
+		typeof value.splice === 'function' &&
+		!(value.propertyIsEnumerable('length'));
+}
+
+//Array.prototype has methods on it
+//we can add properties, just like Object.prototype
+
+Function.prototype.method = function(name, func) {
+	this.prototype[name] = func;
+
+	return this;
+}
+
+//add a reduce method to the array prototype to compute values of elements on array
+
+Array.method('reduce', function(f, value) {
+	var i;
+
+	for (i = 0; i < this.length; i++) {
+		value = f(this[i], value);
+	}
+	return value;
+});
+
+var data = [12, 98, 43, 9, 14];
+
+var add = function(a, b) {
+	return a + b;
+}
+
+var mult = function(a, b) {
+	return a * b;
+}
+
+data.reduce(add, 0); // 176
+data.reduce(mult, 1); //6371568
+
+data.total = function() {
+	return data.reduce(add, 0);
+}
+
+total = data.total(); //176
+
+//arrays are uninitialized, 'undefined', shouldve provided a dimension function to fill array with numbers
+
+Array.dim = function(dimension, initial) {
+	var a =[], i;
+
+	for (i = initial; i < dimension; i++)
+		a[i] = initial;
+	return a;
+}
+
+var myArray = Array.dim(10,0);
+
+//no multiple dimensional arrays
+//but you can have an array of arrays 
+
+var array2d = [
+	[1, 2, 3],
+	[4,5,6],
+	[7,8,9]
+	]
+
+console.log(array2d[2][1]) // 8
+
+
+//building multi-dimensional arrays
+for (i = 0; i < n; i += 1) {
+my_array[i] = [];
+}
+
+Array.matrix = function(a, b, initial) {
+	var n, i, j, mat = [];
+
+	for (i = 0; i < a; i++) {
+		n = [];
+		for (j = 0; j < b; j++) {
+			n[j] = initial;
+			}
+		mat[i] = n;
+		}
+	return mat;
+}
+
+Array.matrix = function (m, n, initial) {
+var a, i, j, mat = [];
+for (i = 0; i < m; i += 1) {
+a = [];
+for (j = 0; j < n; j += 1) {
+a[j] = initial;
+}
+mat[i] = a;
+}
+return mat;
+};
+
+//now make 4 * 4 matrix filled with zeroes
+
+//identity matrix
+
+Array.imatrix = function(n) {
+
+	var i, matrix = Array.matrix(n, n, 0);
+
+	for (i = 0; i < n; i++)
+		matrix[i][i] = 1;
+
+	return matrix;
+}
+
+//end of Arrays CHAPTER
+
+/******************* REGULAR EXPRESSIONS ******************/
