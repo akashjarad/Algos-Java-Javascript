@@ -117,3 +117,8 @@ character $
 $
 
 $ represents the end of the string.
+
+module
+import
+require
+module.exports
