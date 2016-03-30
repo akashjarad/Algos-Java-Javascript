@@ -36,3 +36,48 @@ var addArr = function(arr) {
 }
 
 addArr(a);
+
+b.pop();
+
+console.log(b);
+
+b.slice(0,4);
+
+c.reverse();
+
+console.log(c);
+
+var d = b.shift();
+
+a.reverse();
+
+console.log(a);
+
+console.log(d);
+console.log(b);
+
+var e = b.concat([0,1,2,3]);
+
+var shallow = e.slice(1,3);
+
+console.log(shallow);
+console.log(e);
+console.log('sort funciton');
+
+console.log(e.sort());
+
+console.log(e.reverse());
+
+console.log('passed in sort');
+
+e.sort( (a,b) => { return a-b } )
+
+var m = ["mm", "cc", "C", "A", "b", "B", 4, 45, 32, 2, 8];
+
+m.sort( (a,b) => {
+       if (a === b)
+         return 0;
+  if (typeof a === typeof b)
+    return a < b ? -1 : 1;
+  return typeof a < typeof b ? -1: 1;
+})
