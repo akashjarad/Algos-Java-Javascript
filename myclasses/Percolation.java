@@ -12,10 +12,10 @@ public class Percolation {
 	private int size;
 
 	public Percolation(int N) {
-		mapOpen = new boolean[N*N];
-		percArray = new WeightedQuickUnionUF(N * N + 2);
-		bottom = N*N+1;
 		size = N;
+		bottom = size * size+1;
+		mapOpen = new boolean[size*size];
+		percArray = new WeightedQuickUnionUF(size * size + 2);
 	}
 
 	public void open(int i, int j) {
@@ -48,7 +48,7 @@ public class Percolation {
 	}
 
 	public int getQFIndex(int i, int j) {
-		return (i - 1) * N + j;
+		return size * (i - 1) + j;
 	}
 
 	public boolean percolates() {

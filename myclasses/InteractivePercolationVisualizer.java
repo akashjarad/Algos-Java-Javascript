@@ -10,10 +10,10 @@
  *  open sites (that aren't full) in white, and blocked sites in black.
  *
  ******************************************************************************/
-import myclasses.*
 
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
+import myclasses.*;
 
 public class InteractivePercolationVisualizer {
 

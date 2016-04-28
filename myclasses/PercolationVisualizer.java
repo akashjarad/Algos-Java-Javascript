@@ -21,7 +21,7 @@ import java.util.*;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
-import myclasses.Percolation;
+import myclasses.*;
 
 public class PercolationVisualizer {
 
