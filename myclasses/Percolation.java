@@ -13,7 +13,8 @@ public class Percolation {
 
 	public Percolation(int N) {
 		size = N;
-		bottom = size * size+1;
+		top = 0;
+		bottom = size * size + 1;
 		mapOpen = new boolean[size*size];
 		percArray = new WeightedQuickUnionUF(size * size + 2);
 	}
@@ -23,8 +24,8 @@ public class Percolation {
 			throw new java.lang.IndexOutOfBoundsException();
 			}
 
-		mapOpen[(i-1) * N + (j-1)] = true;
-
+		mapOpen[(i-1) * size + (j-1)] = true;
+ 
 		if (i == 1) {
 			percArray.union(getQFIndex(i,j), top);
 		}
@@ -48,7 +49,7 @@ public class Percolation {
 	}
 
 	public int getQFIndex(int i, int j) {
-		return size * (i - 1) + j;
+		return ((i-1) * size + j);
 	}
 
 	public boolean percolates() {
@@ -56,11 +57,11 @@ public class Percolation {
 	}
 
 	public boolean isOpen(int i, int j) {
-		return (mapOpen[(N * (i-1)) + (j-1)] == true);
+		return mapOpen[(i-1) * size + (j-1)] == true;
 	}
 
 	public boolean isClosed(int i, int j) {
-		return (mapOpen[(N * (i-1)) + (j-1)] != true);
+		return mapOpen[(i-1) * size + (j-1)] != true;
 	}
 
 	public boolean isFull(int i, int j) {
