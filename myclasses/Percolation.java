@@ -57,7 +57,7 @@ public class Percolation {
 	}
 
 	public boolean isOpen(int i, int j) {
-		return mapOpen[(i-1) * size + (j-1)] == true;
+		return mapOpen[(i-1) * size + (j-1)];
 	}
 
 	public boolean isClosed(int i, int j) {
