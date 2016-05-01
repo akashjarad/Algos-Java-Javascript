@@ -68,7 +68,7 @@ public class Deque<Item> implements Iterable<Item> {
 			throw new NullPointerException();
 		}
 		Node n = new Node();
-
+		n.item = item;
 		if (last != null) {
 			n.prev = last;
 			last.next = n;
@@ -125,7 +125,7 @@ public class Deque<Item> implements Iterable<Item> {
 		private Node current = first;
 
 		public boolean hasNext() {
-			return (current != null);
+			return (current.next != null);
 		}
 
 		public Item next() {
@@ -141,7 +141,6 @@ public class Deque<Item> implements Iterable<Item> {
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
-
 	}
 
 	public static void main(String[] args) {
