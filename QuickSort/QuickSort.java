@@ -17,7 +17,7 @@ public class QuickSort {
 		assert isSorted(a);
 	}
 
-	// quicksort the subarray from a[lo] to a[h]
+	// quicksort the subarray from a[lo] to a[hi]
 	private static void sort(Comparable[] a, int lo, int hi) {
 		if (hi <= lo) return;
 
