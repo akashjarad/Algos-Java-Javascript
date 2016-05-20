@@ -1,9 +1,10 @@
 import java.util.Comparator;
 import java.lang.*;
-import java.util.System;
 import edu.princeton.cs.algs4.StdDraw;
 
 public class Point implements Comparable<Point> {
+
+	public final Comparator<Point> SLOPE_ORDER = new SlopeOrder();
 
     private final int x;     // x-coordinate of this point
     private final int y;     // y-coordinate of this point
@@ -51,7 +52,23 @@ public class Point implements Comparable<Point> {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
-        return (that.y-this.y/that.x-this.x);
+        double ycoords = (double)(that.y-this.y);
+        double xcoords = (double)(that.x-this.x);
+
+        if (xcoords == 0.0 && ycoords == 0.0) {
+        	return Double.NEGATIVE_INFINITY;
+        }
+        if (xcoords == 0.0) {
+        	return Double.POSITIVE_INFINITY;
+        }
+        if (ycoords == 0.0) {
+        	return 0.0;
+        }
+
+        else {
+        	double slope = ycoords/xcoords;
+        	return slope;
+        }
     }
 
     /**
@@ -92,12 +109,22 @@ public class Point implements Comparable<Point> {
      *
      * @return the Comparator that defines this ordering on points
      */
-    public Comparator<Point> slopeOrder() {
-      	return new PointComparator();
-    }
 
-    private class PointComparator implements Comparator<Point> {
+    private class SlopeOrder implements Comparator<Point> {
+    	public int compare(Point p1, Point p2){
+    		double a = Point.this.slopeTo(p1);
+    		double b = Point.this.slopeTo(p2);
 
+    		if (a < b) {
+    			return -1;
+    		}
+    		else if (a > b) {
+    			return 1;
+    		}
+    		else {
+    			return 0;
+    		}
+    	}
     }
 
 
@@ -117,6 +144,12 @@ public class Point implements Comparable<Point> {
      * Unit tests the Point data type.
      */
     public static void main(String[] args) {
-        /* YOUR CODE HERE */
+        Point origin = new Point(2,4);
+        Point s1 = new Point(2,5);
+        Point s2 = new Point(0,2);
+        Point s3 = new Point(4,6);
+        Point s4 = new Point(6,8);
+
+        System.out.println(s2.slopeTo(s4));
     }
 }
