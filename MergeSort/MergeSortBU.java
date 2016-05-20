@@ -1,8 +1,8 @@
-public class MergeSort {
+public class MergeSortBU {
 
 	private static Comparable[] aux;
-	
-	private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
+
+	private static void merge(Comparable[] a, int lo, int mid, int hi) {
 		assert isSorted(a, lo, mid); //precondition: a[lo...mid] sorted
 		assert isSorted(a, mid+1, hi); //precondition a[mid+1...hi] sorted
 	
@@ -25,12 +25,16 @@ public class MergeSort {
 		assert isSorted(a, lo, hi);
 	}
 
-	private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
-		if (hi <= lo) return;
-		int mid = lo + (hi - lo) / 2;
-		sort(a, aux, lo, mid);
-		sort(a, aux, mid+1, hi);
-		merge(a, aux, lo, mid, hi);
+	private static sort(Comparable[] a) {
+		int N = a.length;
+
+		aux = new Comparable[N];
+
+		for (int size = 1; size < N; size=size+size) {
+			for (int lo = 0; lo < N-size; lo+= size+size) {
+				merge(a, lo, lo+size-1, Math.min(lo+size+size-1, N-1));
+			}
+		}
 	}
 
 	public static void sort(Comparable[] a) {
@@ -41,14 +45,4 @@ public class MergeSort {
 	private static boolean less(Comparable v1, Comparable v2) {
 		return v1.compareTo(v2) < 0;
 	}
-	
-	private static boolean isSorted(Comparable[] a) {
-        return isSorted(a, 0, a.length - 1);
-    }
-
-    private static boolean isSorted(Comparable[] a, int lo, int hi) {
-        for (int i = lo + 1; i <= hi; i++)
-            if (less(a[i], a[i-1])) return false;
-        return true;
-    }	
 }
