@@ -39,5 +39,30 @@ for (var i = 0; i < array.length; i++) {
 	}
 }
 
-console.log(SelectionSort(a));
+function exch(a, v1, v2) {
+	var swap = a[v1];
+	a[v1] = a[v2];
+	a[v2] = swap;
+}
+
+function SelectionSort2(arr) {
+
+	for (i = 0; i < arr.length; i++) {
+		var min = i;
+
+		for (j = i+1; j < arr.length; j++)
+			if (arr[j] < arr[min]) {
+				min = j;
+			}
+
+		if (arr[min] < arr[i]) {
+			exch(arr, min, i);
+		}
+	}
+}
+
+SelectionSort(a);
+console.log(a);
+
+SelectionSort2(a);
 console.log(a);
